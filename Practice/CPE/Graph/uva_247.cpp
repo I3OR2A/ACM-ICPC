@@ -38,13 +38,18 @@ void solve(int cur){
 			k = stack[--top];
 			instack[k] = false;
 			contract[k] = cur;
+			if(k != cur){
+				cout << dtn[k] << ", ";
+			}
 		}while(k != cur);
+		cout << dtn[k] << endl;
 	}
 }
 
 int n, m, id;
 
 int main(){
+int testcase = 0;
 	while(scanf("%d%d", &n, &m) == 2){
 		if(n == 0 && m == 0) break;
 		id = 0;
@@ -73,9 +78,11 @@ int main(){
 		memset(instack, false, sizeof(bool) * n);
 		int top = 0;
 		int t = 0;
+		if(testcase) puts("");
+		printf("Calling circles for data set %d:\n", ++testcase);
 		for(int i = 0; i < n; ++i){
 			if(!vis[i]){
-				solve(i, i);
+				solve(i);
 			}
 		}
 	}
